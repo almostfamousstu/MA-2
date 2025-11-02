@@ -45,3 +45,27 @@ USER ${USERNAME}
 
 # Default command. In Codespaces this is overridden by the workspace shell, but for local `docker run` it's nice.
 CMD [ "bash" ]
+
+# --- Add VS Code Server (code-server) into the devcontainer image ---
+# If you prefer pinning, set VERSION and verify SHA.
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      wget xz-utils ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install code-server (runs VS Code in the browser)
+# For air-gapped, mirror this binary internally and replace URL.
+ENV CODE_SERVER_VERSION=4.92.2
+RUN wget -O /tmp/code-server.tar.xz "https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION}-linux-amd64.tar.xz" \
+  && mkdir -p /opt/code-server \
+  && tar -xJf /tmp/code-server.tar.xz -C /opt/code-server --strip-components=1 \
+  && ln -s /opt/code-server/bin/code-server /usr/local/bin/code-server \
+  && rm -f /tmp/code-server.tar.xz
+
+# Create a place for config/state (owned by non-root user)
+RUN mkdir -p /home/vscode/.local/share/code-server /home/vscode/.config/code-server \
+  && chown -R vscode:vscode /home/vscode/.local /home/vscode/.config
+
+# Default port for code-server inside container
+EXPOSE 8080
+
