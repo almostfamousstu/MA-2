@@ -1,0 +1,15 @@
+# Core runtime deps
+python-dotenv==1.0.1
+requests==2.32.3
+
+# Internal SDKs / service clients
+# <replace-with-your-internal-service-sdk> @ <git+ssh://git.example.com/internal/service-sdk.git@<tag-or-sha>>
+
+# Tooling / quality
+black==24.8.0
+flake8==7.1.1
+mypy==1.11.2
+
+# Testing
+pytest==8.3.3
+pytest-cov==5.0.0
