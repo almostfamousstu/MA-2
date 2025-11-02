@@ -1,0 +1,38 @@
+{
+  "name": "developer-portal-env",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  // Where VS Code (web or desktop remote) should treat as the project root
+  "workspaceFolder": "/workspace",
+
+  // After container is up, make sure deps are installed
+  "postCreateCommand": "pip install -r requirements.txt",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": [
+          "tests"
+        ],
+        "python.analysis.typeCheckingMode": "basic",
+        "editor.formatOnSave": true,
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/.pytest_cache": true
+        }
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.black-formatter",
+        "ms-azuretools.vscode-docker",
+        "github.vscode-github-actions"
+      ]
+    }
+  }
+}
