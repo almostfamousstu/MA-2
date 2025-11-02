@@ -19,10 +19,10 @@ Developers can use this repository to:
 
 The task is to **develop and validate a Python script** that:
 
-1. Calls the internal reporting service via provided SDK or REST interface.
+1. Calls the Decision Key reporting service via provided SDK.
 2. Retrieves the required dataset.
-3. Generates a properly formatted flat file (e.g., CSV or pipe-delimited).
-4. Delivers the file to the designated internal location (e.g., S3 bucket, shared drive, or secure FTP endpoint).
+3. Generates a properly formatted flat file.
+4. Delivers the file to the designated internal location (secure FTP endpoint).
 
 All service access details, sample payloads, and endpoint documentation are provided in the `/docs` directory.
 
