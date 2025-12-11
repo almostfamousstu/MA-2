@@ -6,16 +6,6 @@
 Dior Flat Files are delivered on the same day as DK Monthly Go-Live. Currently they are produced manually using the Flat File Admin Tool and Microsoft Azure. The objective of this solution is to reliably automate this process.
 
 
-**POC DISCLAIMER**
-This repository serves as the **proof of concept (POC)** for the MARU Developer Portal.
-The goal of this POC is to demonstrate a streamlined onboarding and execution workflow for third-party developers within a standardized GitHub environment.
-
-This repository allows developers to:
-
-* Quickly spin up a ready-to-use **Codespace** environment with all dependencies preinstalled.
-* Review structured documentation outlining **requirements**, **constraints**, and **solution design**.
-* Implement, test, and deliver a working automation with minimal setup friction.
-
 ---
 
 ## 🧭 Solution Objective
