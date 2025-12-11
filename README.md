@@ -54,8 +54,8 @@ The task is to **develop and validate a Python script** that:
 
 ## 🧰 Reference Documentation
 
-* [Internal Reporting Service API Docs](./docs/reporting_service_api.md)
-* [Developer Portal Guidelines](./docs/developer_portal_standards.md)
+* [LD Service API Docs](https://iriworldwide-my.sharepoint.com/:w:/r/personal/haresh_sheladiya_circana_com/Documents/Docs/LD%20Services%20Login%20API.docx?d=w88823dd1feb049179d823ff2f0a62d21&csf=1&web=1&e=mua3QQ)
+* [GenMerch Resource Center](https://iriworldwide.sharepoint.com/sites/product)
 * [Coding Standards & Review Process](./docs/code_review_standards.md)
 
 ---
