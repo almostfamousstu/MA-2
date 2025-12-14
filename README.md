@@ -50,12 +50,24 @@ The current process involves **multiple hand-offs and manual interventions**, wh
 
 ---
 
+## 🔒 Security & Access
+
+*   NAV Apps - Edit Manager, Element Center
+*   [Rule Editor](https://webapp-nav-ruleeditor-prod.azurewebsites.net/#/home)
+*   [GOATS](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/G.O.A.T.S.aspx)
+*   [GenMerch Model Monitor](https://genmerch-model-monitor.decisionkey.npd.com/)
+*   [Felix](http://felix.npd.com/#/login)
+*   [GOATS Dashboard](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/G.O.A.T.S.-Dashboard.aspx)
+*   [Master Delivery Calendar](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/MDS.aspx)
+*   Access to library/backend systems which are used by the front-end tools
+*   Access to API Interface available for the tools
+*   Teams Channel ID to read messages
+---
 ## ⚙️ Development Environment
 
 ### GitHub Codespaces
 
 Click **“Code → Open with Codespaces”** to launch the preconfigured environment.
-
 
 ---
 
@@ -79,20 +91,5 @@ Test coverage includes:
 
 Once validated, the automation will be scheduled or integrated into internal orchestration tools (e.g., Airflow, Control-M, or internal schedulers).
 For the POC, execution will be manual via the CLI.
-
----
-
-## 🔒 Security & Access
-
-*   NAV Apps - Edit Manager, Element Center
-*   [Rule Editor](https://webapp-nav-ruleeditor-prod.azurewebsites.net/#/home)
-*   [GOATS](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/G.O.A.T.S.aspx)
-*   [GenMerch Model Monitor](https://genmerch-model-monitor.decisionkey.npd.com/)
-*   [Felix](http://felix.npd.com/#/login)
-*   [GOATS Dashboard](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/G.O.A.T.S.-Dashboard.aspx)
-*   [Master Delivery Calendar](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/MDS.aspx)
-*   Access to library/backend systems which are used by the front-end tools
-*   Access to API Interface available for the tools
-*   Teams Channel ID to read messages
 
 ---
