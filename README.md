@@ -1,44 +1,44 @@
-# **Dior US Flat Files Process Automation**
+# **Gen Merch Flat Files Process Automation**
 
 ## 📄 Overview
 
-**Dior US Flat Files Process Automation**
-Dior Flat Files are delivered on the same day as DK Monthly Go-Live. Currently they are produced manually using the Flat File Admin Tool and Microsoft Azure. The objective of this solution is to reliably automate this process.
+As part of legacy GM offerings, Circana delivers approximately **130+ weekly and monthly frequencies** to its clients. 
+
+The current process involves **multiple hand-offs and manual interventions**, which are time-consuming and prone to errors. Frequencies are delivered using **Circana proprietary tools** such as **ETL Job Control, Edit Manager, etc.**
+
 
 
 ---
 
 ## 🧭 Solution Objective
 
-The task is to **develop and validate a Python script** that:
+### **Core Workflow**
+1.  **Job Initiation:**
+    *   **User Submission:** A user submits a job via a **streamlit Web Form**.
+    *   **Data Storage:** The job details are stored in a **Jobs** database.
+    *   **Notification:** Simultaneously, a message is sent to **Power Automate**, which alerts a **Teams Channel** about the new submission.
 
-1. Calls the Decision Key reporting service via provided SDK.
-2. Retrieves the required dataset.
-3. Generates a properly formatted flat file.
-4. Delivers the file to the designated internal location (secure mFTP endpoint).
+2.  **Job Processing & Control:**
+    *   **Python App Engine:** A central **Python App** acts as the orchestrator. it "Searches and Starts Jobs" by pulling from the database and updates job statuses as they progress.
+    *   **Backend Support:** The app interacts with **GOATS** to enable event-driven triggers.
 
+3.  **NAV Integration (The Execution Pipeline):**
+    The Python App manages jobs through a series of RPA's (numbered steps 2 through 6) across various NAV components:
+    *   **Edit Manager & Console:** The app interacts with the **NAV Edit Manager** (to define job rules and schedule times) and the **NAV Console**.
+    *   **Validation:** The system performs automated checks, such as "Verify for 'No Data Found'" and "Verify for 'No Issues' for each hierarchy."
+    *   **ETL & Execution:** The job reaches the **NAV Element Centre** and **NAV ETL Job Control**, where data input for job submission occurs.
+
+4.  **Scheduling & Reporting:**
+    *   **Schedule Management:** Based on validation results, the system can **Re/Schedule** jobs.
+    *   **Final Actions:** Once a job is scheduled, the system updates the **Felix** power-app and updates the final "closeout" status.
+    *   **Status Updates:** **Email Updates** are sent throughout the process, and final statuses are fed back to Power Automate and the primary Jobs database to complete the loop.
 
 ---
 
 ## 🧩 Architecture & Solution Design
 
-### Components
+<img width="832" height="362" alt="image" src="https://github.com/user-attachments/assets/a83972cd-dabb-47a7-8807-3710b66c8289" />
 
-| Component                                     | Description                                                                             |
-| --------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **Decision Key "Utility Belt" SDK**           | Provides prebuilt functions for data extraction.                                        |
-| **Automation Script (`dkFlatFileExtract.py`)**| Implements extraction logic, flat file generation, and delivery.                        |
-| **Config (`config.yaml`)**                    | Stores environment variables such as service endpoint, credentials, and delivery paths. |
-| **Dev Container (`.devcontainer/` folder)**   | Defines a portable development environment for GitHub Codespaces.                       |
-| **Tests (`/tests`)**                          | Unit tests for validating the automation workflow.                                      |
-
-### Flow
-
-1. Developer launches a Codespace → container builds automatically using the provided `Dockerfile` and `devcontainer.json`.
-2. The Python environment installs all dependencies from `requirements.txt`.
-3. Developer configures `config.yaml` with valid credentials and parameters.
-4. The `dkFlatFileExtract.py` script is executed via `python3 dkFlatFileExtract.py <ARGS>`.
-5. Output file is validated and delivered to the target location.
 
 ---
 
@@ -46,7 +46,7 @@ The task is to **develop and validate a Python script** that:
 
 * [LD Service API Docs](https://iriworldwide-my.sharepoint.com/:w:/r/personal/haresh_sheladiya_circana_com/Documents/Docs/LD%20Services%20Login%20API.docx?d=w88823dd1feb049179d823ff2f0a62d21&csf=1&web=1&e=mua3QQ)
 * [GenMerch Resource Center](https://iriworldwide.sharepoint.com/sites/product)
-* [Coding Standards & Review Process](./docs/code_review_standards.md)
+* [Coding Standards & Review Process](https://github.com/almostfamousstu/mah-cookbook)
 
 ---
 
@@ -84,8 +84,15 @@ For the POC, execution will be manual via the CLI.
 
 ## 🔒 Security & Access
 
-* **Authentication:** Service credentials are stored as GitHub Secrets or in a local `.env` file (excluded via `.gitignore`).
-* **Data Handling:** Generated flat files contain internal data; and cannot be uploaded to public repositories.
-* **Access Control:** Only approved developers will have access to this repo (via MARU Developer Portal).
+*   NAV Apps - Edit Manager, Element Center
+*   [Rule Editor](https://webapp-nav-ruleeditor-prod.azurewebsites.net/#/home)
+*   [GOATS](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/G.O.A.T.S.aspx)
+*   [GenMerch Model Monitor](https://genmerch-model-monitor.decisionkey.npd.com/)
+*   [Felix](http://felix.npd.com/#/login)
+*   [GOATS Dashboard](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/G.O.A.T.S.-Dashboard.aspx)
+*   [Master Delivery Calendar](https://iriworldwide.sharepoint.com/sites/GlobalOpsProduction/SitePages/MDS.aspx)
+*   Access to library/backend systems which are used by the front-end tools
+*   Access to API Interface available for the tools
+*   Teams Channel ID to read messages
 
 ---
