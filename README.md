@@ -36,11 +36,36 @@ The current process involves **multiple hand-offs and manual interventions**, wh
 ---
 
 ## 🧩 Architecture & Solution Design
+### Technical Architecture
 
+| Component | Technology |
+|-----------|------------|
+| **Backend Framework** | FastAPI 0.104.1 |
+| **Web Server** | Uvicorn 0.24.0 |
+| **Templating** | Jinja2 3.1.2 |
+| **Data Validation** | Pydantic 2.5.0 |
+| **Form Handling** | python-multipart 0.0.6 |
+
+### Project Structure
+---
+gm_pos_tool/
+├── config/           # Configuration files (YAML-based config system)
+│   ├── config.yaml
+│   └── loader.py
+├── jobs/             # Job-related data/logic
+├── src/              # Source code
+│   ├── main.py       # Main FastAPI application (~31KB)
+│   ├── pipeline.py   # Pipeline processing logic (~15KB)
+│   └── nav/          # Navigation components
+├── templates/        # Jinja2 HTML templates
+├── index.html        # Landing page
+├── requirements.txt  # Python dependencies
+└── test_api.py       # API tests
+---
+
+### Solution Diagram
 <img width="832" height="362" alt="image" src="https://github.com/user-attachments/assets/a83972cd-dabb-47a7-8807-3710b66c8289" />
 
-
----
 
 ## 🧰 Reference Documentation
 
