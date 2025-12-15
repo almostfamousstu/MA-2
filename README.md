@@ -47,7 +47,7 @@ The current process involves **multiple hand-offs and manual interventions**, wh
 | **Form Handling** | python-multipart 0.0.6 |
 
 ### Project Structure
----
+```
 gm_pos_tool/
 ├── config/           # Configuration files (YAML-based config system)
 │   ├── config.yaml
@@ -61,7 +61,7 @@ gm_pos_tool/
 ├── index.html        # Landing page
 ├── requirements.txt  # Python dependencies
 └── test_api.py       # API tests
----
+```
 
 ### Solution Diagram
 <img width="832" height="362" alt="image" src="https://github.com/user-attachments/assets/a83972cd-dabb-47a7-8807-3710b66c8289" />
