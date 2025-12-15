@@ -97,22 +97,6 @@ Then access it at `http://localhost:8000`
 
 ---
 
-## 🧪 Testing
-
-Run all tests before submitting for review:
-
-```bash
-pytest tests/
-```
-
-Test coverage includes:
-
-* DK connection validation
-* Flat file schema conformity
-* Delivery endpoint availability
-
----
-
 ## 🚀 Deployment / Delivery
 
 Once validated, the automation will be scheduled or integrated into internal orchestration tools (e.g., Airflow, Control-M, or internal schedulers).
