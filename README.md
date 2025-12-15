@@ -6,8 +6,6 @@ As part of legacy GM offerings, Circana delivers approximately **130+ weekly and
 
 The current process involves **multiple hand-offs and manual interventions**, which are time-consuming and prone to errors. Frequencies are delivered using **Circana proprietary tools** such as **ETL Job Control, Edit Manager, etc.**
 
-
-
 ---
 
 ## 🧭 Solution Objective
@@ -90,9 +88,12 @@ gm_pos_tool/
 ---
 ## ⚙️ Development Environment
 
-### GitHub Codespaces
+The application runs locally using Uvicorn: 
+```bash
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
 
-Click **“Code → Open with Codespaces”** to launch the preconfigured environment.
+Then access it at `http://localhost:8000`
 
 ---
 
